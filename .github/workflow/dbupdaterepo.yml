@@ -16,7 +16,7 @@ jobs:
       
     - name: Remote update Prod Repo
       env:
-        Databricks_Host: ${{ secrets.Databricks_Host }}
-        Databricks_Token: ${{ secrets.Databricks_Token }}
+        DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+        DATABRICKS_TOCKEN: ${{ secrets.DATABRICKS_TOCKEN }}
       run:
         databricks repos update "/Workspace/Users/sri.polati@gmail.com/GitHub Folders/Prod/test-repo-1" --branch main
