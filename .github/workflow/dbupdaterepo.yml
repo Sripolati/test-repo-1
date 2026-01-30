@@ -1,0 +1,22 @@
+on:
+ push
+ 
+jobs:
+ update:
+  runs-on: ubuntu-latest
+  
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.8
+        
+    - name: Install Daabricks CLI
+      uses: databricks/setup-cli@main
+      
+    - name: Remote update Prod Repo
+      env:
+        Daabricks_Host: ${{ secrets.Daabricks_Host }}
+        Daabricks_Token: ${{ secrets.Daabricks_Token }}
+      run:
+        databricks repos update "/Workspace/Users/sri.polati@gmail.com/GitHub Folders/Prod/test-repo-1" --branch main
